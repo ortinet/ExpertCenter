@@ -14,9 +14,9 @@
 
 <h3>Добавление прайс-листа</h3>
 
-<form action="" method="POST" style="margin-top: 20px">
+<form action="CreateNew" method="POST" style="margin-top: 20px">
     <div>
-        <input type="text" class="form-control" placeholder="Название прайс-листа">
+        <input type="text" asp-for="PriceList.Name" name="name" class="form-control" placeholder="Название прайс-листа">
     </div>
 
     <div class="columnsHeader">
@@ -24,7 +24,8 @@
         <button type="button" class="btn btn-success align" style="font-size: 16px; margin-left: 10px;" id="addBtn">+</button>
     </div>
     
-    <div class="userColumns">
+    <div class="userColumns"
+        name="Columns">
         @* @foreach (var column in Model.Columns)
         {
             <div style="display: flex; margin-top: 5px;" class="userColumnInputRow">
@@ -40,7 +41,7 @@
     </div>
 
     <div class="listCreatingButtons">
-        <button type="button" class="btn btn-primary align" typeof="Submit">Создать</button>
+        <button type="submit" class="btn btn-primary align" typeof="Submit">Создать</button>
         <button type="button" class="btn btn-Secondary align" onclick="window.history.go(-1); return false;">Назад</button>
     </div>
 

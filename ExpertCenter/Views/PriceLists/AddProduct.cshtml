@@ -4,15 +4,15 @@
 
 <hr ></hr>
 
-<form method="post">
+<form method="post" asp-action="CreateProduct">
     <div style="margin-top: 15px">
         <h5>Название</h5>
-        <input type="text" class="form-control"></input>
+        <input type="text" asp-for="Name" class="form-control"></input>
     </div>
 
     <div style="margin-top: 15px";>
         <h5>Код товара</h5>
-        <input type="text" class="form-control"></input>
+        <input type="text" asp-for="Code" class="form-control"></input>
     </div>
 
     <div style="margin-top: 15px">
@@ -51,6 +51,6 @@
 
     <div class="d-flex flex-row-reverse" style="margin-top: 15px; ">
         <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Назад</button>
-        <button class="btn btn-success" style="margin: 0px 5px">Сохранить</button>
+        <button class="btn btn-success" style="margin: 0px 5px" type="submit">Сохранить</button>
     </div>
 </form>

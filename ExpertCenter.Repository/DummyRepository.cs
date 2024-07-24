@@ -130,6 +130,11 @@ namespace ExpertCenter.Repository
             return true;
         }
 
+        public ColumnType? GetColumnType(string code)
+        {
+            return _columnTypes.FirstOrDefault(c => c.Code == code);
+        }
+
         public IEnumerable<ColumnType> GetColumnTypes()
         {
             return _columnTypes;

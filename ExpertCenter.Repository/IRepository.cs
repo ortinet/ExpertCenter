@@ -10,6 +10,7 @@ namespace ExpertCenter.Repository
     public interface IRepository
     {
         IEnumerable<ColumnType> GetColumnTypes();
+        ColumnType? GetColumnType(string code);
         IEnumerable<PriceList> GetPriceLists();
         PriceList? GetPriceList(int id);
         IEnumerable<UserColumn> GetUnickUserColumns();

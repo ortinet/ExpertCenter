@@ -1,7 +1,10 @@
+using ExpertCenter.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IRepository, DummyRepository>();
 
 var app = builder.Build();
 

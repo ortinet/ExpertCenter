@@ -33,6 +33,7 @@ function getNewRow(columnData) {
     const columnNameInput = document.createElement("input");
     columnNameInput.className = "form-control";
     columnNameInput.placeholder = "Имя колонки";
+    columnNameInput.name = "columnHeader";
 
     if (columnData != null) {
         columnNameInput.value = columnData.Header;
@@ -65,6 +66,7 @@ function getDropDown(selectedType) {
     selectHtml.className = "form-select";
     selectHtml.style = "width:auto; margin: 0px 5px"
     selectHtml.setAttribute("aria-label", "Default select example");
+    selectHtml.name = "columnTypeCode"
 
     for (let i = 0; i < columnTypeOptions.length; i++) {
 
