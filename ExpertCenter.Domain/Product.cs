@@ -10,6 +10,7 @@ namespace ExpertCenter.Domain
     {
         public string Name { get; set; } = string.Empty;
         public string Code { get; set; } = string.Empty;
-        public Dictionary<UserColumn, string> Properties { get; set; } = new Dictionary<UserColumn, string>();
+        public int PriceListId { get; set; } = -1;
+        public Dictionary<UserColumn, string?> Properties { get; set; } = new Dictionary<UserColumn, string?>();
     }
 }

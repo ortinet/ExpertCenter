@@ -3,10 +3,6 @@
 const addColumnButton = document.getElementById("addBtn");
 addColumnButton.addEventListener("click", onAddColumnButtonClick);
 
-//const columnTypeOptions = [{ header: "Число", type: "num" },
-//{ header: "Однострочный текст", type: "num" },
-//{ header: "Многострочный текст", type: "num" }];
-
 let columnTypeOptions;
 
 function onAddColumnButtonClick(e) {

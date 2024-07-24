@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExpertCenter.Domain\ExpertCenter.Domain.csproj" />
+    <ProjectReference Include="..\ExpertCenter.Repository\ExpertCenter.Repository.csproj" />
   </ItemGroup>
 
   <ItemGroup>

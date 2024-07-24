@@ -17,9 +17,12 @@
             </tr>
         </theader>
         
-        @foreach (var priceList in Model)
-        {
-            <tr><td>@priceList.Id</td><td>@Html.ActionLink(priceList.Name, "PriceList", new { Id = priceList.Id })</td></tr>
+        @{
+            int index = 1;
+            foreach (var priceList in Model)
+            {
+                <tr><td>@(index++)</td><td>@Html.ActionLink(priceList.Name, "PriceList", new { Id = priceList.Id })</td></tr>
+            }
         }
     </tbody>
 </table>
