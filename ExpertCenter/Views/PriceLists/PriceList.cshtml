@@ -3,8 +3,8 @@
 <h3>@Model.Name</h3>
 
 <div style="display: flex; margin-top: 10px">
-    <button class="btn btn-success" id="addBtn">+ Добавить позицию</button>
-    <button class="btn btn-secondary" style="margin-left: 5px;">Назад</button>
+    <button class="btn btn-success" onclick="location.href='@Url.Action("AddProduct", "PriceLists", new { Model.Id })'" id="addBtn">+ Добавить позицию</button>
+    <button class="btn btn-secondary" onclick="window.history.go(-1); return false;" style="margin-left: 5px;">Назад</button>
 </div>
 
 <table cellspacing=0 class="table table-bordered table-hover table-inverse table-striped" width=100% style="margin-top: 15px;">
@@ -36,13 +36,3 @@
         }
     </tbody>
 </table>
-
-<script>
-    const addBtn = document.getElementById("addBtn");
-
-    function onAddBtnClick() {
-        location.href = 'https://localhost:7058/pricelists/addproduct/' + @Model.Id;
-    }
-
-    addBtn.addEventListener("click", onAddBtnClick);
-</script>
