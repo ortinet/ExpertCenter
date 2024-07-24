@@ -26,6 +26,8 @@
                         <td style="font-size: 18px; text-align: left; vertical-align: middle;">@column.Header</td>
                         <td>
                             @{
+                                if (column.Type == null) continue;
+
                                 switch (column.Type.Code)
                                 {
                                     case "num":
@@ -52,7 +54,7 @@
     </div>
 
     <div class="d-flex flex-row-reverse" style="margin-top: 15px; ">
-        <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Назад</button>
+        <button class="btn btn-secondary" type="button" onclick="location.href='@Url.Action("PriceList", "PriceLists", new { id = Model.PriceListId })'">Назад</button>
         <button class="btn btn-success" style="margin: 0px 5px" type="submit">Сохранить</button>
     </div>
 </form>

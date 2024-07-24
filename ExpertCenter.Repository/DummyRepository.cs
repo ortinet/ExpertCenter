@@ -129,6 +129,23 @@ namespace ExpertCenter.Repository
                 return false;
             }
 
+            // Заполнение отсутствующих колонок в UserColumns
+            foreach (var prop in product.Properties)
+            {
+                if (product.UserColumns.All(column => column.Id != prop.Key))
+                {
+                    UserColumn? requiredColumn = _userColumns.FirstOrDefault(column => column.Id == prop.Key);
+
+                    if (requiredColumn == null)
+                    {
+                        product.Properties.Remove(prop.Key);
+                        continue;
+                    }
+
+                    product.UserColumns.Add(requiredColumn);
+                }
+            }
+
             requiredPriceList.Products.Add(product);
             return true;
         }

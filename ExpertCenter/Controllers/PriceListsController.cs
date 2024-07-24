@@ -3,12 +3,14 @@ using ExpertCenter.Models;
 using ExpertCenter.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExpertCenter.Controllers
 {
     public class PriceListsController : Controller
     {
         private readonly string UnableToCreatePriceListMessage = "Не удалось создать прайс-лист";
+        private readonly string UnableToCreateProductMessage = "Не удалось создать товар";
         private readonly IRepository _repository;
 
         public PriceListsController(IRepository repository)
@@ -85,7 +87,7 @@ namespace ExpertCenter.Controllers
             if (requiredPriceList == null) return NotFound();
 
             Product product = new Product();
-            product.Id = priceListId;
+            product.PriceListId = priceListId;
             foreach (var column in requiredPriceList.Columns)
             {
                 product.Properties.Add(column.Id, null);
@@ -98,16 +100,28 @@ namespace ExpertCenter.Controllers
         [HttpPost]
         public IActionResult CreateProduct(Product product)
         {
-            //var requiredPriceList = _repository.GetPriceList(priceListId);
-            //if (requiredPriceList == null) return NotFound();
+            if (!ModelState.IsValid)
+            {
+                var message = string.Join("\n", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                return Content(message ?? UnableToCreateProductMessage);
+            }
 
-            //Product product = new Product();
-            //foreach (var column in requiredPriceList.Columns)
-            //{
-            //    product.Properties.Add(column, null);
-            //}
+            foreach (var prop in product.Properties)
+            {
+                if (string.IsNullOrEmpty(prop.Value))
+                {
+                    return Content(UnableToCreateProductMessage);
+                }
+            }
 
-            return View("AddProduct", product);
+            bool creationResult = _repository.CreateProduct(product);
+            if (creationResult)
+            {
+                return RedirectToAction("PriceList", product.PriceListId);
+            }
+            else return Content(UnableToCreateProductMessage);
         }
     }
 }
