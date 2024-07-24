@@ -5,6 +5,8 @@
 <hr ></hr>
 
 <form method="post" asp-action="CreateProduct">
+    <input value="@Model.PriceListId" asp-for="PriceListId" hidden/>
+
     <div style="margin-top: 15px">
         <h5>Название</h5>
         <input type="text" asp-for="Name" class="form-control"></input>
@@ -18,27 +20,27 @@
     <div style="margin-top: 15px">
         <table cellspacing=0 class="table table-bordered table-inverse" width=100%>
             <tbody>
-                @foreach (var prop in Model.Properties)
+                @foreach (var column in Model.UserColumns)
                 {
                     <tr>
-                        <td style="font-size: 18px; text-align: left; vertical-align: middle;">@prop.Key.Header</td>
+                        <td style="font-size: 18px; text-align: left; vertical-align: middle;">@column.Header</td>
                         <td>
                             @{
-                                switch (prop.Key.Type.Code)
+                                switch (column.Type.Code)
                                 {
                                     case "num":
                                         <div data-mdb-input-init class="form-outline">
-                                            <input type="number" id="typeNumber" class="form-control" />
+                                            <input asp-for="Properties[column.Id]" type="number" id="typeNumber" class="form-control" />
                                         </div>
                                             break;
                                     case "text":
-                                        <input type="text" class="form-control"></input>
+                                        <input asp-for="Properties[column.Id]" type="text" class="form-control"></input>
                                         break;
                                     case "multitext":
-                                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                                        <textarea asp-for="Properties[column.Id]" class="form-control" aria-label="With textarea"></textarea>
                                         break;
                                     default:
-                                        <input type="text" class="form-control"></input>
+                                        <input asp-for="Properties[column.Id]" type="text" class="form-control"></input>
                                         break;
                                     }
                                 }

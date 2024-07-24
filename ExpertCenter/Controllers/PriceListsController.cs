@@ -85,9 +85,11 @@ namespace ExpertCenter.Controllers
             if (requiredPriceList == null) return NotFound();
 
             Product product = new Product();
+            product.Id = priceListId;
             foreach (var column in requiredPriceList.Columns)
             {
-                product.Properties.Add(column, null);
+                product.Properties.Add(column.Id, null);
+                product.UserColumns.Add(column);
             }
 
             return View("AddProduct", product);

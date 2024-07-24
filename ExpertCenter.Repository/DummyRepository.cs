@@ -76,33 +76,36 @@ namespace ExpertCenter.Repository
                             Id = 0,
                             Code = "Кот",
                             Name = "Котофей",
-                            Properties = new Dictionary<UserColumn, string?>()
+                            Properties = new Dictionary<int, string?>()
                             {
-                                { _userColumns[0], "memes" },
-                                { _userColumns[1], "1337" },
-                            }
+                                { _userColumns[0].Id, "memes" },
+                                { _userColumns[1].Id, "1337" },
+                            },
+                            UserColumns = new List<UserColumn>() { _userColumns[0], _userColumns[1] }
                         },
                         new Product()
                         {
                             Id = 1,
                             Code = "Пес",
                             Name = "Собака",
-                            Properties = new Dictionary<UserColumn, string?>()
+                            Properties = new Dictionary<int, string?>()
                             {
-                                { _userColumns[0], "галлон" },
-                                { _userColumns[1], "228" },
-                            }
+                                { _userColumns[0].Id, "галлон" },
+                                { _userColumns[1].Id, "228" },
+                            },
+                            UserColumns = new List<UserColumn>() { _userColumns[0], _userColumns[1] }
                         },
                         new Product()
                         {
                             Id = 2,
                             Code = "Сыр",
                             Name = "Сыровар",
-                            Properties = new Dictionary<UserColumn, string?>()
+                            Properties = new Dictionary<int, string?>()
                             {
-                                { _userColumns[0], "легкое" },
-                                { _userColumns[1], "322" },
-                            }
+                                { _userColumns[0].Id, "легкое" },
+                                { _userColumns[1].Id, "322" },
+                            },
+                            UserColumns = new List<UserColumn>() { _userColumns[0], _userColumns[1] }
                         },
                     }
                 },
