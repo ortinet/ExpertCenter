@@ -1,0 +1,53 @@
+﻿@using System.Diagnostics
+@using System.Text.Json
+@model ExpertCenter.Models.NewPriceListViewModel
+
+<style>
+    div.listCreatingButtons{
+        margin-top: 15px
+    }
+    .columnsHeader{
+        display: flex;
+        margin-top: 10px
+    }
+</style>
+
+<h3>Добавление прайс-листа</h3>
+
+<form action="" method="POST" style="margin-top: 20px">
+    <div>
+        <input type="text" class="form-control" placeholder="Название прайс-листа">
+    </div>
+
+    <div class="columnsHeader">
+        <h4>Колонки</h4>
+        <button type="button" class="btn btn-success align" style="font-size: 16px; margin-left: 10px;" id="addBtn">+</button>
+    </div>
+    
+    <div class="userColumns">
+        @* @foreach (var column in Model.Columns)
+        {
+            <div style="display: flex; margin-top: 5px;" class="userColumnInputRow">
+                <input class="form-control" placeholder="Имя колонки"/>
+                <select class="form-select" style="width:auto; margin: 0px 5px;" aria-label="Default select example">
+                    <option value="0" selected>Число</option>
+                    <option value="1">Однострочный текст</option>
+                    <option value="2">Многострочный текст</option>
+                </select>
+                <button class="btn btn-danger" type="button" onclick="removeColumn()">&times</button>
+            </div>
+        } *@
+    </div>
+
+    <div class="listCreatingButtons">
+        <button type="button" class="btn btn-primary align" typeof="Submit">Создать</button>
+        <button type="button" class="btn btn-Secondary align" onclick="location.href='https://localhost:7058'">Назад</button>
+    </div>
+
+</form>
+
+<script src="~/js/initializeColumns.js"></script>
+
+<script>
+    initializeColumns(@Html.Raw(JsonSerializer.Serialize(Model.PriceList.Columns)), @Html.Raw(JsonSerializer.Serialize(Model.ColumnTypes)));
+</script>

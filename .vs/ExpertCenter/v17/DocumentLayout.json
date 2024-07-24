@@ -1,0 +1,225 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\wwwroot\\js\\initializecolumns.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\wwwroot\\js\\initializecolumns.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}|ExpertCenter.Domain\\ExpertCenter.Domain.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter.domain\\usercolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}|ExpertCenter.Domain\\ExpertCenter.Domain.csproj|solutionrelative:expertcenter.domain\\usercolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}|ExpertCenter.Domain\\ExpertCenter.Domain.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter.domain\\columntype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}|ExpertCenter.Domain\\ExpertCenter.Domain.csproj|solutionrelative:expertcenter.domain\\columntype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\controllers\\pricelistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\controllers\\pricelistscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\models\\newpricelistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\models\\newpricelistviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\views\\pricelists\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\views\\pricelists\\new.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\views\\pricelists\\addproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\views\\pricelists\\addproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\views\\pricelists\\all.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\views\\pricelists\\all.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\views\\pricelists\\pricelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\views\\pricelists\\pricelist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}|ExpertCenter.Domain\\ExpertCenter.Domain.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter.domain\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}|ExpertCenter.Domain\\ExpertCenter.Domain.csproj|solutionrelative:expertcenter.domain\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|c:\\users\\shcol\\source\\repos\\expertcenter\\expertcenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CDA623C-7A87-451D-A7F6-9256952C6FED}|ExpertCenter\\ExpertCenter.csproj|solutionrelative:expertcenter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ColumnType.cs",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter.Domain\\ColumnType.cs",
+              "RelativeDocumentMoniker": "ExpertCenter.Domain\\ColumnType.cs",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter.Domain\\ColumnType.cs",
+              "RelativeToolTip": "ExpertCenter.Domain\\ColumnType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T10:39:01.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserColumn.cs",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter.Domain\\UserColumn.cs",
+              "RelativeDocumentMoniker": "ExpertCenter.Domain\\UserColumn.cs",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter.Domain\\UserColumn.cs",
+              "RelativeToolTip": "ExpertCenter.Domain\\UserColumn.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T18:02:40.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewPriceListViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Models\\NewPriceListViewModel.cs",
+              "RelativeDocumentMoniker": "ExpertCenter\\Models\\NewPriceListViewModel.cs",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Models\\NewPriceListViewModel.cs",
+              "RelativeToolTip": "ExpertCenter\\Models\\NewPriceListViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-24T10:22:59.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PriceListsController.cs",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Controllers\\PriceListsController.cs",
+              "RelativeDocumentMoniker": "ExpertCenter\\Controllers\\PriceListsController.cs",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Controllers\\PriceListsController.cs",
+              "RelativeToolTip": "ExpertCenter\\Controllers\\PriceListsController.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAgwBAAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T16:17:22.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "initializeColumns.js",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\wwwroot\\js\\initializeColumns.js",
+              "RelativeDocumentMoniker": "ExpertCenter\\wwwroot\\js\\initializeColumns.js",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\wwwroot\\js\\initializeColumns.js",
+              "RelativeToolTip": "ExpertCenter\\wwwroot\\js\\initializeColumns.js",
+              "ViewState": "AQIAADkAAAAAAAAAAAAvwEwAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-07-24T09:18:04.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "New.cshtml",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\New.cshtml",
+              "RelativeDocumentMoniker": "ExpertCenter\\Views\\PriceLists\\New.cshtml",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\New.cshtml",
+              "RelativeToolTip": "ExpertCenter\\Views\\PriceLists\\New.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAADMAAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-22T19:52:13.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddProduct.cshtml",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\AddProduct.cshtml",
+              "RelativeDocumentMoniker": "ExpertCenter\\Views\\PriceLists\\AddProduct.cshtml",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\AddProduct.cshtml",
+              "RelativeToolTip": "ExpertCenter\\Views\\PriceLists\\AddProduct.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-23T19:41:11.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "All.cshtml",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\All.cshtml",
+              "RelativeDocumentMoniker": "ExpertCenter\\Views\\PriceLists\\All.cshtml",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\All.cshtml",
+              "RelativeToolTip": "ExpertCenter\\Views\\PriceLists\\All.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-22T16:18:54.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PriceList.cshtml",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\PriceList.cshtml",
+              "RelativeDocumentMoniker": "ExpertCenter\\Views\\PriceLists\\PriceList.cshtml",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\PriceLists\\PriceList.cshtml",
+              "RelativeToolTip": "ExpertCenter\\Views\\PriceLists\\PriceList.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACQAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-23T17:57:59.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ExpertCenter\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ExpertCenter\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAC0AAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-23T18:36:05.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter.Domain\\Product.cs",
+              "RelativeDocumentMoniker": "ExpertCenter.Domain\\Product.cs",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter.Domain\\Product.cs",
+              "RelativeToolTip": "ExpertCenter.Domain\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-23T17:59:58.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Program.cs",
+              "RelativeDocumentMoniker": "ExpertCenter\\Program.cs",
+              "ToolTip": "C:\\Users\\shcol\\source\\repos\\ExpertCenter\\ExpertCenter\\Program.cs",
+              "RelativeToolTip": "ExpertCenter\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T16:09:16.189Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

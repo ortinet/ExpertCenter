@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpertCenter", "ExpertCenter\ExpertCenter.csproj", "{3CDA623C-7A87-451D-A7F6-9256952C6FED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertCenter.Domain", "ExpertCenter.Domain\ExpertCenter.Domain.csproj", "{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CDA623C-7A87-451D-A7F6-9256952C6FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CDA623C-7A87-451D-A7F6-9256952C6FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CDA623C-7A87-451D-A7F6-9256952C6FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CDA623C-7A87-451D-A7F6-9256952C6FED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD7FD0B-E2B9-43B2-8D21-0E17C309D086}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3868B7E9-CEB4-46B7-A43E-63C9272F1665}
+	EndGlobalSection
+EndGlobal
