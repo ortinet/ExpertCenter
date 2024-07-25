@@ -16,5 +16,6 @@ namespace ExpertCenter.Repository
         IEnumerable<UserColumn> GetUnickUserColumns();
         bool CreateProduct(Product product);
         bool CreatePriceList(PriceList priceList);
+        bool DeleteProduct(int id);
     }
 }

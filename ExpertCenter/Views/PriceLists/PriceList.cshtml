@@ -3,7 +3,7 @@
 <h3>@Model.Name</h3>
 
 <div style="display: flex; margin-top: 10px">
-    <button class="btn btn-success" onclick="location.href='@Url.Action("AddProduct", "PriceLists", new { Model.Id })'" id="addBtn">+ Добавить позицию</button>
+    <button class="btn btn-success" onclick="location.href='@Url.Action("AddProduct", "PriceLists", new { priceListId = Model.Id })'" id="addBtn">+ Добавить позицию</button>
     <button class="btn btn-secondary" onclick="location.href='@Url.Action("All", "PriceLists")'" style="margin-left: 5px;">Назад</button>
 </div>
 
@@ -16,6 +16,7 @@
             {
                 <th>@column.Header</th>            
             }
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +30,28 @@
                     string? val = product.Properties[column.Id];
                     <td>@(val ?? string.Empty)</td>
                 }
+                <td style="text-align: center;">
+                    <button data-product-id="@product.Id" type="button" class="btn btn-danger btn-xs dltBtn" onclick='onDeleteButtonClick(this)'>&times</button>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    async function onDeleteButtonClick(sender) {
+        if (!confirm('Вы действительно хотите удалить этот товар?')) {
+            return;
+        }
+
+        let url = "@(Url.Action("DeleteProduct", "PriceLists"))/" + sender.dataset.productId;
+        let response = await fetch(url, { method: 'DELETE' });
+
+        if (response.ok) {
+            sender.parentElement.parentElement.remove();
+        }
+        else {
+            alert("Не удалось удалить товар");
+        }
+    }
+</script>

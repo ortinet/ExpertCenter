@@ -119,9 +119,16 @@ namespace ExpertCenter.Controllers
             bool creationResult = _repository.CreateProduct(product);
             if (creationResult)
             {
-                return RedirectToAction("PriceList", product.PriceListId);
+                return RedirectToAction("PriceList", new { id = product.PriceListId });
             }
             else return Content(UnableToCreateProductMessage);
+        }
+
+        public IActionResult DeleteProduct(int id)
+        {
+            if (_repository.DeleteProduct(id))
+                return Ok();
+            return NotFound();
         }
     }
 }

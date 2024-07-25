@@ -1,6 +1,7 @@
 ﻿using ExpertCenter.Domain;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -117,12 +118,24 @@ namespace ExpertCenter.Repository
 
         public bool CreatePriceList(PriceList priceList)
         {
+            priceList.Id = _priceLists.Max(x => x.Id) + 1;
             _priceLists.Add(priceList);
+
+            foreach (var column in priceList.Columns)
+            {
+                if (_userColumns.All(existingColumn => existingColumn.Id != column.Id))
+                {
+                    column.Id = _userColumns.Max(userColumn => userColumn.Id) + 1;
+                    _userColumns.Add(column);
+                }
+            }
+
             return true;
         }
 
         public bool CreateProduct(Product product)
         {
+            product.Id = _priceLists.Max(list => list.Products.Count > 0 ? list.Products.Max(product => product.Id) : -1) + 1;
             PriceList? requiredPriceList = _priceLists.FirstOrDefault(list => list.Id == product.PriceListId);
             if (requiredPriceList == null)
             {
@@ -150,6 +163,20 @@ namespace ExpertCenter.Repository
             return true;
         }
 
+        public bool DeleteProduct(int id)
+        {
+            foreach (var list in _priceLists)
+            {
+                Product? productToRemove = list.Products.FirstOrDefault(prod => prod.Id == id);
+                if (productToRemove != null)
+                {
+                    return list.Products.Remove(productToRemove);
+                }
+            }
+
+            return false;
+        }
+
         public ColumnType? GetColumnType(string code)
         {
             return _columnTypes.FirstOrDefault(c => c.Code == code);
@@ -172,7 +199,7 @@ namespace ExpertCenter.Repository
 
         public IEnumerable<UserColumn> GetUnickUserColumns()
         {
-            return _userColumns.Take(2);
+            return _userColumns.DistinctBy(column => (column.Header, column.Type?.Code)).ToList();
         }
     }
 }
