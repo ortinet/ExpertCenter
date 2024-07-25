@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ExpertCenter.Repository.Models
 {
     [Table("UserColumnValues")]
-    internal class UserColumnValue : ObjectBase
+    public class UserColumnValue : ObjectBase
     {
         public string? Value { get; set; }
         public int UserColumnId { get; set; }

@@ -4,35 +4,21 @@ using System.Text;
 
 namespace ExpertCenter.Repository.EntityFramework
 {
-    public class EFRepository : DbContext, IRepository
+    public class EFRepository : IRepository
     {
-        private DbSet<PriceList> PriceLists { get; set; } = null!;
-        private DbSet<Product> Products { get; set; } = null!;
-        private DbSet<UserColumn> UserColumns { get; set; } = null!;
-        private DbSet<UserColumnValue> UserColumnValues { get; set; } = null!;
-        private DbSet<ColumnType> ColumnTypes { get; set; } = null!;
+        private readonly ExpertCenterDbContext _dbContext;
 
-        private readonly string _connectionString = "Server=localhost;Database=ExpertCenterDB;Trusted_Connection=true;TrustServerCertificate=True";
-
-        public EFRepository()
+        public EFRepository(IDbContextFactory<ExpertCenterDbContext> dbContextFactory)
         {
-            //Database.EnsureDeleted();
-            Database.EnsureCreated();
-        }
-
-        public EFRepository(string connectionString)
-        {
-            _connectionString = connectionString;
-
-            Database.EnsureCreated();
+            _dbContext = dbContextFactory.CreateDbContext();
         }
 
         public bool CreatePriceList(Domain.PriceListDTO priceList)
         {
             try
             {
-                var entry = PriceLists.Add(priceList.ConvertToEF());
-                SaveChanges();
+                var entry = _dbContext.PriceLists.Add(priceList.ConvertToEF());
+                _dbContext.SaveChanges();
 
                 return true;
             }
@@ -46,8 +32,8 @@ namespace ExpertCenter.Repository.EntityFramework
         {
             try
             {
-                var entry = Products.Add(product.ConvertToEF());
-                SaveChanges();
+                var entry = _dbContext.Products.Add(product.ConvertToEF());
+                _dbContext.SaveChanges();
 
                 return true;
             }
@@ -59,22 +45,22 @@ namespace ExpertCenter.Repository.EntityFramework
 
         public bool DeleteProduct(int id)
         {
-            UserColumnValues.Where(columnValue => columnValue.ProductId == id).ExecuteDelete();
-            int rowsAffected = Products.Where(product => product.Id == id).ExecuteDelete();
-            SaveChanges();
+            _dbContext.UserColumnValues.Where(columnValue => columnValue.ProductId == id).ExecuteDelete();
+            int rowsAffected = _dbContext.Products.Where(product => product.Id == id).ExecuteDelete();
+            _dbContext.SaveChanges();
 
             return rowsAffected == 1;
         }
 
         public Domain.ColumnTypeDTO? GetColumnType(string code)
         {
-            return ColumnTypes.FirstOrDefault(c => c.Code == code)?.Convert();
+            return _dbContext.ColumnTypes.FirstOrDefault(c => c.Code == code)?.Convert();
         }
 
         public IEnumerable<Domain.ColumnTypeDTO> GetColumnTypes()
         {
             List<Domain.ColumnTypeDTO> result = [];
-            foreach (var efColumnType in ColumnTypes.ToList())
+            foreach (var efColumnType in _dbContext.ColumnTypes.ToList())
                 result.Add(efColumnType.Convert());
 
             return result;
@@ -82,7 +68,7 @@ namespace ExpertCenter.Repository.EntityFramework
 
         public Domain.PriceListDTO? GetPriceList(int id)
         {
-            return PriceLists
+            return _dbContext.PriceLists
                 .Include(priceList => priceList.UserColumns)
                     .ThenInclude(column => column.ColumnType)
                 .Include(priceList => priceList.Products)
@@ -93,7 +79,7 @@ namespace ExpertCenter.Repository.EntityFramework
         public IEnumerable<Domain.PriceListDTO> GetPriceLists()
         {
             List<Domain.PriceListDTO> result = [];
-            foreach (var efPriceList in PriceLists.ToList())
+            foreach (var efPriceList in _dbContext.PriceLists.ToList())
                 result.Add(efPriceList.Convert());
 
             return result;
@@ -101,8 +87,8 @@ namespace ExpertCenter.Repository.EntityFramework
 
         public IEnumerable<Domain.UserColumnDTO> GetUnickUserColumns()
         {
-            IEnumerable<UserColumn> efUserColumns = 
-                UserColumns.Include(column => column.ColumnType).AsEnumerable()
+            IEnumerable<UserColumn> efUserColumns =
+                _dbContext.UserColumns.Include(column => column.ColumnType).AsEnumerable()
                 .DistinctBy(column => new { column.Header, column.ColumnTypeId });
 
             List<Domain.UserColumnDTO> result = new List<Domain.UserColumnDTO>();
@@ -110,24 +96,6 @@ namespace ExpertCenter.Repository.EntityFramework
                 result.Add(efUserColumn.Convert());
 
             return result;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<UserColumnValue>()
-            .HasOne(columnValue => columnValue.Product)
-            .WithMany(product => product.UserColumnValues)
-            .OnDelete(DeleteBehavior.NoAction);
-
-            //modelBuilder.Entity<UserColumnValue>()
-            //.HasOne(columnValue => columnValue.UserColumn)
-            //.WithMany(column => column.UserColumnValues)
-            //.OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

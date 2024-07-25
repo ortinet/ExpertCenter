@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ExpertCenter.Repository.Models
 { 
-    internal class PriceList : ObjectBase
+    public class PriceList : ObjectBase
     {
         public string? Name { get; set; }
         public List<Product> Products { get; set; } = [];

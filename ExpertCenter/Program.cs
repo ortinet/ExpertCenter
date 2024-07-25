@@ -1,12 +1,26 @@
 using ExpertCenter.Repository;
 using ExpertCenter.Repository.EntityFramework;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json");
+
+builder.Services.AddDbContextFactory<ExpertCenterDbContext>(optionBuilder =>
+{
+    string? conStr = builder.Configuration.GetConnectionString("default");
+
+    if (string.IsNullOrEmpty(conStr))
+        throw new Exception("Требуется строка подключения к БД");
+
+    optionBuilder.UseSqlServer(conStr);
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IRepository, EFRepository>();
+builder.Services.AddScoped<IRepository, EFRepository>();
 
 var app = builder.Build();
 

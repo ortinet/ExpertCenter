@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ExpertCenter.Repository.Models
 {
     [Table("UserColumns")]
-    internal class UserColumn : ObjectBase
+    public class UserColumn : ObjectBase
     {
         public string Header { get; set; }
         public int ColumnTypeId { get; set; }

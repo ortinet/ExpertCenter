@@ -3,7 +3,7 @@
 namespace ExpertCenter.Repository.Models
 {
     [Table("Products")]
-    internal class Product : ObjectBase
+    public class Product : ObjectBase
     {
         public string Name { get; set; }
         public string Code { get; set; }
