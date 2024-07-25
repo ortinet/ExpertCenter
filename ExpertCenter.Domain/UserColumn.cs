@@ -14,5 +14,6 @@ namespace ExpertCenter.Domain
         public string Header { get; set; } = string.Empty;
         [Required]
         public ColumnType? Type { get; set; }
+        public int PriceListId { get; set; }
     }
 }

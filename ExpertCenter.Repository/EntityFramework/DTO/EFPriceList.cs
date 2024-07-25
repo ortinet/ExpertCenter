@@ -11,5 +11,6 @@ namespace ExpertCenter.Repository.EntityFramework
     {
         public string? Name { get; set; }
         public List<EFProduct> Products { get; set; } = [];
+        public List<EFUserColumn> UserColumns { get; set; } = [];
     }
 }

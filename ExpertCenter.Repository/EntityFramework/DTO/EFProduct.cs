@@ -10,7 +10,6 @@ namespace ExpertCenter.Repository.EntityFramework
         public string Code { get; set; }
         public int PriceListId { get; set; }
         public EFPriceList? PriceList { get; set; }
-        public List<EFUserColumn> UserColumns { get; set; } = [];
         public List<EFUserColumnValue> UserColumnsValues { get; set; } = [];
     }
 }

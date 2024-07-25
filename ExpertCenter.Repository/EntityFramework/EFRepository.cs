@@ -28,49 +28,65 @@ namespace ExpertCenter.Repository.EntityFramework
 
         public bool CreatePriceList(PriceList priceList)
         {
-            throw new NotImplementedException();
+            var entry = PriceLists.Add(priceList.ConvertToEF());
+            SaveChanges();
+
+            return entry.State == EntityState.Added;
         }
 
         public bool CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            var entry = Products.Add(product.ConvertToEF());
+            SaveChanges();
+
+            return entry.State == EntityState.Added;
         }
 
         public bool DeleteProduct(int id)
         {
-            throw new NotImplementedException();
+            int rowsAffected = Products.Where(product => product.Id == id).ExecuteDelete();
+            SaveChanges();
+
+            return rowsAffected == 1;
         }
 
         public ColumnType? GetColumnType(string code)
         {
-            throw new NotImplementedException();
+            return ColumnTypes.FirstOrDefault(c => c.Code == code)?.Convert();
         }
 
         public IEnumerable<ColumnType> GetColumnTypes()
         {
-            throw new NotImplementedException();
+            List<ColumnType> result = [];
+            foreach (var efColumnType in ColumnTypes)
+                result.Add(efColumnType.Convert());
+
+            return result;
         }
 
         public PriceList? GetPriceList(int id)
         {
-            throw new NotImplementedException();
+            return PriceLists.FirstOrDefault(x => x.Id == id)?.Convert();
         }
 
         public IEnumerable<PriceList> GetPriceLists()
         {
             List<PriceList> result = [];
-
-            //foreach (var efPriceList in PriceLists.ToList())
-            //{
-            //    PriceList priceList = new PriceList() { }
-            //}
+            foreach (var efPriceList in PriceLists)
+                result.Add(efPriceList.Convert());
 
             return result;
         }
 
         public IEnumerable<UserColumn> GetUnickUserColumns()
         {
-            throw new NotImplementedException();
+            IEnumerable<EFUserColumn> efUserColumns = UserColumns.DistinctBy(column => new { column.Header, column.ColumnType.Code });
+
+            List<UserColumn> result = new List<UserColumn>();
+            foreach (var efUserColumn in efUserColumns)
+                result.Add(efUserColumn.Convert());
+
+            return result;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

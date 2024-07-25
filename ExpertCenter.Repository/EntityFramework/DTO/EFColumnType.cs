@@ -8,6 +8,5 @@ namespace ExpertCenter.Repository.EntityFramework
     {
         public string Title { get; set; }
         public string Code { get; set; }
-        public EFUserColumnValue UserColumnValue { get; set; }
     }
 }
