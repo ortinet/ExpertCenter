@@ -19,9 +19,9 @@ namespace ExpertCenter.Controllers
             _repository = repository;
         }
 
-        public IActionResult All()
+        public IActionResult Index()
         {
-            return View("All", _repository.GetPriceLists());
+            return View("Index", _repository.GetPriceLists());
         }
 
         [HttpGet]
@@ -77,7 +77,7 @@ namespace ExpertCenter.Controllers
 
             bool creationResult = _repository.CreatePriceList(newPriceList);
             if (creationResult)
-                return RedirectToAction("All");
+                return RedirectToAction("Index");
             else return BadRequest();
         }
 
