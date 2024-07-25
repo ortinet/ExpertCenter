@@ -17,10 +17,6 @@ namespace ExpertCenter.Domain
 
         [Range(0, int.MaxValue)]
         public int PriceListId { get; set; } = -1;
-        /// <summary>
-        /// Ключ - id колонки
-        /// </summary>
-        public Dictionary<int, string?> Properties { get; set; } = new Dictionary<int, string?>();
-        public List<UserColumn> UserColumns { get; set; } = new List<UserColumn>();
+        public List<UserColumnValue> UserColumnValues { get; set; } = [];
     }
 }

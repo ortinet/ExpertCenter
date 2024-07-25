@@ -1,4 +1,4 @@
-﻿@model ExpertCenter.Domain.Product
+﻿@model ExpertCenter.Models.AddProductViewModel
 
 <h3>Добавление товара</h3>
 
@@ -9,7 +9,7 @@
 
     <div style="margin-top: 15px">
         <h5>Название</h5>
-        <input type="text" asp-for="Name" class="form-control"></input>
+        <input type="text" asp-for="ProductName" class="form-control"></input>
     </div>
 
     <div style="margin-top: 15px";>
@@ -32,17 +32,17 @@
                                 {
                                     case "num":
                                         <div data-mdb-input-init class="form-outline">
-                                            <input asp-for="Properties[column.Id]" type="number" id="typeNumber" class="form-control" />
+                                            <input asp-for="UserColumnValues[column.Id]" type="number" id="typeNumber" class="form-control" />
                                         </div>
-                                            break;
+                                        break;
                                     case "text":
-                                        <input asp-for="Properties[column.Id]" type="text" class="form-control"></input>
+                                        <input asp-for="UserColumnValues[column.Id]" type="text" class="form-control"></input>
                                         break;
                                     case "multitext":
-                                        <textarea asp-for="Properties[column.Id]" class="form-control" aria-label="With textarea"></textarea>
+                                        <textarea asp-for="UserColumnValues[column.Id]" class="form-control" aria-label="With textarea"></textarea>
                                         break;
                                     default:
-                                        <input asp-for="Properties[column.Id]" type="text" class="form-control"></input>
+                                        <input asp-for="UserColumnValues[column.Id]" type="text" class="form-control"></input>
                                         break;
                                     }
                                 }

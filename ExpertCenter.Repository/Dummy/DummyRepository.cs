@@ -77,36 +77,57 @@ namespace ExpertCenter.Repository
                             Id = 0,
                             Code = "Кот",
                             Name = "Котофей",
-                            Properties = new Dictionary<int, string?>()
+                            UserColumnValues = new()
                             {
-                                { _userColumns[0].Id, "memes" },
-                                { _userColumns[1].Id, "1337" },
+                                new UserColumnValue()
+                                {
+                                    UserColumn = _userColumns[0],
+                                    Value = "memes",
+                                },
+                                new UserColumnValue()
+                                {
+                                    UserColumn = _userColumns[1],
+                                    Value = "1337",
+                                },
                             },
-                            UserColumns = new List<UserColumn>() { _userColumns[0], _userColumns[1] }
                         },
                         new Product()
                         {
                             Id = 1,
                             Code = "Пес",
                             Name = "Собака",
-                            Properties = new Dictionary<int, string?>()
+                            UserColumnValues = new()
                             {
-                                { _userColumns[0].Id, "галлон" },
-                                { _userColumns[1].Id, "228" },
+                                new UserColumnValue()
+                                {
+                                    UserColumn = _userColumns[0],
+                                    Value = "галлон",
+                                },
+                                new UserColumnValue()
+                                {
+                                    UserColumn = _userColumns[1],
+                                    Value = "228",
+                                },
                             },
-                            UserColumns = new List<UserColumn>() { _userColumns[0], _userColumns[1] }
                         },
                         new Product()
                         {
                             Id = 2,
                             Code = "Сыр",
                             Name = "Сыровар",
-                            Properties = new Dictionary<int, string?>()
+                            UserColumnValues = new()
                             {
-                                { _userColumns[0].Id, "легкое" },
-                                { _userColumns[1].Id, "322" },
+                                new UserColumnValue()
+                                {
+                                    UserColumn = _userColumns[0],
+                                    Value = "легкое",
+                                },
+                                new UserColumnValue()
+                                {
+                                    UserColumn = _userColumns[1],
+                                    Value = "322",
+                                },
                             },
-                            UserColumns = new List<UserColumn>() { _userColumns[0], _userColumns[1] }
                         },
                     }
                 },
@@ -140,23 +161,6 @@ namespace ExpertCenter.Repository
             if (requiredPriceList == null)
             {
                 return false;
-            }
-
-            // Заполнение отсутствующих колонок в UserColumns
-            foreach (var prop in product.Properties)
-            {
-                if (product.UserColumns.All(column => column.Id != prop.Key))
-                {
-                    UserColumn? requiredColumn = _userColumns.FirstOrDefault(column => column.Id == prop.Key);
-
-                    if (requiredColumn == null)
-                    {
-                        product.Properties.Remove(prop.Key);
-                        continue;
-                    }
-
-                    product.UserColumns.Add(requiredColumn);
-                }
             }
 
             requiredPriceList.Products.Add(product);

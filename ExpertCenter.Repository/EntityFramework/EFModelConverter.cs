@@ -26,8 +26,8 @@ namespace ExpertCenter.Repository.EntityFramework
             {
                 Id = efUserColumn.Id,
                 Header = efUserColumn.Header,
-                Type = efUserColumn.
-            }
+                //Type = efUserColumn.
+            };
         }
     }
 }

@@ -3,6 +3,7 @@ using ExpertCenter.Models;
 using ExpertCenter.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ExpertCenter.Controllers
@@ -86,19 +87,12 @@ namespace ExpertCenter.Controllers
             var requiredPriceList = _repository.GetPriceList(priceListId);
             if (requiredPriceList == null) return NotFound();
 
-            Product product = new Product();
-            product.PriceListId = priceListId;
-            foreach (var column in requiredPriceList.Columns)
-            {
-                product.Properties.Add(column.Id, null);
-                product.UserColumns.Add(column);
-            }
-
-            return View("AddProduct", product);
+            AddProductViewModel vm = new AddProductViewModel(priceListId, requiredPriceList.Columns);
+            return View("AddProduct", vm);
         }
 
         [HttpPost]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct(AddProductViewModel vm)
         {
             if (!ModelState.IsValid)
             {
@@ -108,20 +102,21 @@ namespace ExpertCenter.Controllers
                 return Content(message ?? UnableToCreateProductMessage);
             }
 
-            foreach (var prop in product.Properties)
+            foreach (var columnValue in vm.UserColumnValues)
             {
-                if (string.IsNullOrEmpty(prop.Value))
+                if (string.IsNullOrEmpty(columnValue.Value))
                 {
                     return Content(UnableToCreateProductMessage);
                 }
             }
 
-            bool creationResult = _repository.CreateProduct(product);
-            if (creationResult)
-            {
-                return RedirectToAction("PriceList", new { id = product.PriceListId });
-            }
-            else return Content(UnableToCreateProductMessage);
+            //bool creationResult = _repository.CreateProduct(product);
+            //if (creationResult)
+            //{
+            //    return RedirectToAction("PriceList", new { id = product.PriceListId });
+            //}
+            //else return Content(UnableToCreateProductMessage);
+            return Content(UnableToCreateProductMessage);
         }
 
         public IActionResult DeleteProduct(int id)

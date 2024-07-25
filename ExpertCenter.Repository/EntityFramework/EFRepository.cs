@@ -60,10 +60,10 @@ namespace ExpertCenter.Repository.EntityFramework
         {
             List<PriceList> result = [];
 
-            foreach (var efPriceList in PriceLists.ToList())
-            {
-                PriceList priceList = new PriceList() { }
-            }
+            //foreach (var efPriceList in PriceLists.ToList())
+            //{
+            //    PriceList priceList = new PriceList() { }
+            //}
 
             return result;
         }
