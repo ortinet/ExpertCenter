@@ -110,13 +110,12 @@ namespace ExpertCenter.Controllers
                 }
             }
 
-            //bool creationResult = _repository.CreateProduct(product);
-            //if (creationResult)
-            //{
-            //    return RedirectToAction("PriceList", new { id = product.PriceListId });
-            //}
-            //else return Content(UnableToCreateProductMessage);
-            return Content(UnableToCreateProductMessage);
+            bool creationResult = _repository.CreateProduct(vm.ConvertToProduct());
+            if (creationResult)
+            {
+                return RedirectToAction("PriceList", new { id = vm.PriceListId });
+            }
+            else return Content(UnableToCreateProductMessage);
         }
 
         public IActionResult DeleteProduct(int id)

@@ -27,7 +27,7 @@
                 <td>@product.Code</td>
                 @foreach (var column in Model.Columns)
                 {
-                    string? val = product.UserColumnValues.FirstOrDefault(columnValue => columnValue.UserColumn.Id == column.Id)?.Value;
+                    string? val = product.UserColumnValues[column.Id];
                     <td>@(val ?? string.Empty)</td>
                 }
                 <td style="text-align: center;">

@@ -79,16 +79,8 @@ namespace ExpertCenter.Repository
                             Name = "Котофей",
                             UserColumnValues = new()
                             {
-                                new UserColumnValue()
-                                {
-                                    UserColumn = _userColumns[0],
-                                    Value = "memes",
-                                },
-                                new UserColumnValue()
-                                {
-                                    UserColumn = _userColumns[1],
-                                    Value = "1337",
-                                },
+                                { _userColumns[0].Id, "memes" },
+                                { _userColumns[1].Id, "1337" },
                             },
                         },
                         new Product()
@@ -98,16 +90,8 @@ namespace ExpertCenter.Repository
                             Name = "Собака",
                             UserColumnValues = new()
                             {
-                                new UserColumnValue()
-                                {
-                                    UserColumn = _userColumns[0],
-                                    Value = "галлон",
-                                },
-                                new UserColumnValue()
-                                {
-                                    UserColumn = _userColumns[1],
-                                    Value = "228",
-                                },
+                                { _userColumns[0].Id, "галлон" },
+                                { _userColumns[1].Id, "228" },
                             },
                         },
                         new Product()
@@ -117,16 +101,8 @@ namespace ExpertCenter.Repository
                             Name = "Сыровар",
                             UserColumnValues = new()
                             {
-                                new UserColumnValue()
-                                {
-                                    UserColumn = _userColumns[0],
-                                    Value = "легкое",
-                                },
-                                new UserColumnValue()
-                                {
-                                    UserColumn = _userColumns[1],
-                                    Value = "322",
-                                },
+                                { _userColumns[0].Id, "легкое" },
+                                { _userColumns[1].Id, "322" },
                             },
                         },
                     }
