@@ -1,10 +1,10 @@
 ﻿using ExpertCenter.Domain;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ExpertCenter.Repository.EntityFramework
+namespace ExpertCenter.Repository.Models
 {
     [Table("ColumnTypes")]
-    internal class EFColumnType : ObjectBase
+    internal class ColumnType : ObjectBase
     {
         public string Title { get; set; }
         public string Code { get; set; }

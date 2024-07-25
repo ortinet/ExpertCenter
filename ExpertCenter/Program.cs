@@ -1,10 +1,12 @@
 using ExpertCenter.Repository;
+using ExpertCenter.Repository.EntityFramework;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IRepository, DummyRepository>();
+builder.Services.AddTransient<IRepository, EFRepository>();
 
 var app = builder.Build();
 

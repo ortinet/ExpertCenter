@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpertCenter.Domain
 {
-    public class ColumnType : ObjectBase
+    public class ColumnTypeDTO : ObjectBaseDTO
     {
         public string Title { get; set; } = string.Empty;
         public string Code { get; set; } = string.Empty;

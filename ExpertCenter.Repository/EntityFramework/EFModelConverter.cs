@@ -1,18 +1,13 @@
-﻿using ExpertCenter.Domain;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using ExpertCenter.Repository.Models;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpertCenter.Repository.EntityFramework
 {
     internal static class EFModelConverter
     {
-        public static ColumnType Convert(this EFColumnType efColumnType)
+        public static Domain.ColumnTypeDTO Convert(this ColumnType efColumnType)
         {
-            return new ColumnType()
+            return new Domain.ColumnTypeDTO()
             {
                 Id = efColumnType.Id,
                 Code = efColumnType.Code,
@@ -20,9 +15,9 @@ namespace ExpertCenter.Repository.EntityFramework
             };
         }
 
-        public static UserColumn Convert(this EFUserColumn efUserColumn)
+        public static Domain.UserColumnDTO Convert(this UserColumn efUserColumn)
         {
-            return new UserColumn()
+            return new Domain.UserColumnDTO()
             {
                 Id = efUserColumn.Id,
                 Header = efUserColumn.Header,
@@ -30,15 +25,15 @@ namespace ExpertCenter.Repository.EntityFramework
             };
         }
 
-        public static Product Convert(this EFProduct efProduct)
+        public static Domain.ProductDTO Convert(this Product efProduct)
         {
             Dictionary<int, string?> userColumnValues = new Dictionary<int, string?>();
-            foreach (var columnValue in efProduct.UserColumnsValues)
+            foreach (var columnValue in efProduct.UserColumnValues)
             {
                 userColumnValues.Add(columnValue.UserColumnId, columnValue.Value);
             }
 
-            return new Product()
+            return new Domain.ProductDTO()
             {
                 Id = efProduct.Id,
                 Code = efProduct.Code,
@@ -48,21 +43,21 @@ namespace ExpertCenter.Repository.EntityFramework
             };
         }
 
-        public static PriceList Convert(this EFPriceList efPriceList)
+        public static Domain.PriceListDTO Convert(this PriceList efPriceList)
         {
-            List<UserColumn> userColumns = new List<UserColumn>();
+            List<Domain.UserColumnDTO> userColumns = new List<Domain.UserColumnDTO>();
             foreach (var userColumn in efPriceList.UserColumns)
             {
                 userColumns.Add(Convert(userColumn));
             }
 
-            List<Product> products = new List<Product>();
+            List<Domain.ProductDTO> products = new List<Domain.ProductDTO>();
             foreach (var product in efPriceList.Products)
             {
                 products.Add(Convert(product));
             }
 
-            return new PriceList()
+            return new Domain.PriceListDTO()
             {
                 Id = efPriceList.Id,
                 Name = efPriceList.Name ?? string.Empty,
@@ -71,21 +66,21 @@ namespace ExpertCenter.Repository.EntityFramework
             };
         }
 
-        public static EFPriceList ConvertToEF(this PriceList priceList)
+        public static PriceList ConvertToEF(this Domain.PriceListDTO priceList)
         {
-            List<EFProduct> products = new List<EFProduct>();
+            List<Product> products = new List<Product>();
             foreach (var product in priceList.Products)
             {
                 products.Add(ConvertToEF(product));
             }
 
-            List<EFUserColumn> userColumns = new List<EFUserColumn>();
+            List<UserColumn> userColumns = new List<UserColumn>();
             foreach (var userColumn in priceList.Columns)
             {
                 userColumns.Add(userColumn.ConvertToEF());
             }
 
-            return new EFPriceList()
+            return new PriceList()
             {
                 Id = priceList.Id,
                 Name = priceList.Name,
@@ -94,12 +89,12 @@ namespace ExpertCenter.Repository.EntityFramework
             };
         }
 
-        public static EFProduct ConvertToEF(this Product product)
+        public static Product ConvertToEF(this Domain.ProductDTO product)
         {
-            List<EFUserColumnValue> columnValues = new List<EFUserColumnValue>();
+            List<UserColumnValue> columnValues = new List<UserColumnValue>();
             foreach (var columnValue in product.UserColumnValues)
             {
-                columnValues.Add(new EFUserColumnValue()
+                columnValues.Add(new UserColumnValue()
                 {
                     UserColumnId = columnValue.Key,
                     ProductId = product.Id,
@@ -107,31 +102,30 @@ namespace ExpertCenter.Repository.EntityFramework
                 });
             }
 
-            return new EFProduct()
+            return new Product()
             {
                 Id = product.Id,
                 Code = product.Code,
                 Name = product.Name,
                 PriceListId = product.PriceListId,
-                UserColumnsValues = columnValues,
+                UserColumnValues = columnValues,
             };
         }
 
-        public static EFUserColumn ConvertToEF(this UserColumn userColumn)
+        public static UserColumn ConvertToEF(this Domain.UserColumnDTO userColumn)
         {
-            return new EFUserColumn()
+            return new UserColumn()
             {
                 Id = userColumn.Id,
                 Header = userColumn.Header,
                 ColumnTypeId = userColumn.Type.Id,
                 PriceListId = userColumn.PriceListId,
-                ColumnType = ConvertToEF(userColumn.Type),
             };
         }
 
-        public static EFColumnType ConvertToEF(this ColumnType columnType)
+        public static ColumnType ConvertToEF(this Domain.ColumnTypeDTO columnType)
         {
-            return new EFColumnType()
+            return new ColumnType()
             {
                 Id = columnType.Id,
                 Code = columnType.Code,

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ExpertCenter.Domain
 {
-    public class UserColumn : ObjectBase
+    public class UserColumnDTO : ObjectBaseDTO
     {
         [Required]
         public string Header { get; set; } = string.Empty;
         [Required]
-        public ColumnType? Type { get; set; }
+        public ColumnTypeDTO? Type { get; set; }
         public int PriceListId { get; set; }
     }
 }

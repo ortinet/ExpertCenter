@@ -14,11 +14,11 @@ namespace ExpertCenter.Models
         public string Code { get; set; } = string.Empty;
 
         public Dictionary<int, string?> UserColumnValues { get; set; } = [];
-        public IEnumerable<UserColumn> UserColumns { get; set; } = new List<UserColumn>();
+        public IEnumerable<UserColumnDTO> UserColumns { get; set; } = new List<UserColumnDTO>();
 
         public AddProductViewModel() { }
 
-        public AddProductViewModel(int priceListId, IEnumerable<UserColumn> userColumns)
+        public AddProductViewModel(int priceListId, IEnumerable<UserColumnDTO> userColumns)
         {
             PriceListId = priceListId;
             UserColumns = userColumns;
@@ -30,9 +30,9 @@ namespace ExpertCenter.Models
             }
         }
 
-        public Product ConvertToProduct()
+        public ProductDTO ConvertToProduct()
         {
-            return new Product()
+            return new ProductDTO()
             {
                 Code = Code,
                 PriceListId = PriceListId,

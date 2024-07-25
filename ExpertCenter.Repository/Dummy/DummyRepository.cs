@@ -10,52 +10,52 @@ namespace ExpertCenter.Repository
 {
     public class DummyRepository : IRepository
     {
-        private readonly ColumnType[] _columnTypes = [
-            new ColumnType()
+        private readonly ColumnTypeDTO[] _columnTypes = [
+            new ColumnTypeDTO()
             {
                 Id = 0,
                 Title = "Однострочный текст",
                 Code = "text",
             },
-            new ColumnType()
+            new ColumnTypeDTO()
             {
                 Id = 1,
                 Title = "Многострочный текст",
                 Code = "multitext",
             },
-            new ColumnType()
+            new ColumnTypeDTO()
             {
                 Id = 2,
                 Title = "Число",
                 Code = "num",
             },
-            new ColumnType()
+            new ColumnTypeDTO()
             {
                 Id = 3,
                 Title = "Еще какой-то тип",
                 Code = "something",
             },
         ];
-        private readonly List<UserColumn> _userColumns;
-        private readonly List<PriceList> _priceLists;
+        private readonly List<UserColumnDTO> _userColumns;
+        private readonly List<PriceListDTO> _priceLists;
 
         public DummyRepository()
         {
-            _userColumns = new List<UserColumn>()
+            _userColumns = new List<UserColumnDTO>()
             {
-                new UserColumn()
+                new UserColumnDTO()
                 {
                     Id = 0,
                     Header = "Колонка 1",
                     Type = _columnTypes[0],
                 },
-                new UserColumn()
+                new UserColumnDTO()
                 {
                     Id = 1,
                     Header = "Числовая колонка",
                     Type = _columnTypes[2],
                 },
-                new UserColumn()
+                new UserColumnDTO()
                 {
                     Id = 2,
                     Header = "Многострочная колонка",
@@ -63,16 +63,16 @@ namespace ExpertCenter.Repository
                 },
             };
 
-            _priceLists = new List<PriceList>()
+            _priceLists = new List<PriceListDTO>()
             {
-                new PriceList()
+                new PriceListDTO()
                 {
                     Id = 0,
                     Name = "KUKUS",
-                    Columns = new List<UserColumn>() { _userColumns[0], _userColumns[1], },
-                    Products = new List<Product>()
+                    Columns = new List<UserColumnDTO>() { _userColumns[0], _userColumns[1], },
+                    Products = new List<ProductDTO>()
                     {
-                        new Product()
+                        new ProductDTO()
                         {
                             Id = 0,
                             Code = "Кот",
@@ -83,7 +83,7 @@ namespace ExpertCenter.Repository
                                 { _userColumns[1].Id, "1337" },
                             },
                         },
-                        new Product()
+                        new ProductDTO()
                         {
                             Id = 1,
                             Code = "Пес",
@@ -94,7 +94,7 @@ namespace ExpertCenter.Repository
                                 { _userColumns[1].Id, "228" },
                             },
                         },
-                        new Product()
+                        new ProductDTO()
                         {
                             Id = 2,
                             Code = "Сыр",
@@ -107,13 +107,13 @@ namespace ExpertCenter.Repository
                         },
                     }
                 },
-                new PriceList(){ Id = 1, Name = "LULUS" },
-                new PriceList(){ Id = 2, Name = "MEMES" },
-                new PriceList(){ Id = 3, Name = "nigga" },
+                new PriceListDTO(){ Id = 1, Name = "LULUS" },
+                new PriceListDTO(){ Id = 2, Name = "MEMES" },
+                new PriceListDTO(){ Id = 3, Name = "nigga" },
             };
         }
 
-        public bool CreatePriceList(PriceList priceList)
+        public bool CreatePriceList(PriceListDTO priceList)
         {
             priceList.Id = _priceLists.Max(x => x.Id) + 1;
             _priceLists.Add(priceList);
@@ -130,10 +130,10 @@ namespace ExpertCenter.Repository
             return true;
         }
 
-        public bool CreateProduct(Product product)
+        public bool CreateProduct(ProductDTO product)
         {
             product.Id = _priceLists.Max(list => list.Products.Count > 0 ? list.Products.Max(product => product.Id) : -1) + 1;
-            PriceList? requiredPriceList = _priceLists.FirstOrDefault(list => list.Id == product.PriceListId);
+            PriceListDTO? requiredPriceList = _priceLists.FirstOrDefault(list => list.Id == product.PriceListId);
             if (requiredPriceList == null)
             {
                 return false;
@@ -147,7 +147,7 @@ namespace ExpertCenter.Repository
         {
             foreach (var list in _priceLists)
             {
-                Product? productToRemove = list.Products.FirstOrDefault(prod => prod.Id == id);
+                ProductDTO? productToRemove = list.Products.FirstOrDefault(prod => prod.Id == id);
                 if (productToRemove != null)
                 {
                     return list.Products.Remove(productToRemove);
@@ -157,27 +157,27 @@ namespace ExpertCenter.Repository
             return false;
         }
 
-        public ColumnType? GetColumnType(string code)
+        public ColumnTypeDTO? GetColumnType(string code)
         {
             return _columnTypes.FirstOrDefault(c => c.Code == code);
         }
 
-        public IEnumerable<ColumnType> GetColumnTypes()
+        public IEnumerable<ColumnTypeDTO> GetColumnTypes()
         {
             return _columnTypes;
         }
 
-        public PriceList? GetPriceList(int id)
+        public PriceListDTO? GetPriceList(int id)
         {
             return _priceLists.FirstOrDefault(list => list.Id == id);
         }
 
-        public IEnumerable<PriceList> GetPriceLists()
+        public IEnumerable<PriceListDTO> GetPriceLists()
         {
             return _priceLists;
         }
 
-        public IEnumerable<UserColumn> GetUnickUserColumns()
+        public IEnumerable<UserColumnDTO> GetUnickUserColumns()
         {
             return _userColumns.DistinctBy(column => (column.Header, column.Type?.Code)).ToList();
         }

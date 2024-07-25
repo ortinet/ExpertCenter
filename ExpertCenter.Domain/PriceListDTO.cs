@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ExpertCenter.Domain
 {
-    public class PriceList : ObjectBase
+    public class PriceListDTO : ObjectBaseDTO
     {
         [Required(ErrorMessage = "Укажите имя прайс-листа")]
         public string Name { get; set; } = string.Empty;
-        public List<Product> Products { get; set; } = new List<Product>();
-        public List<UserColumn> Columns { get; set; } = new List<UserColumn>();
+        public List<ProductDTO> Products { get; set; } = new List<ProductDTO>();
+        public List<UserColumnDTO> Columns { get; set; } = new List<UserColumnDTO>();
     }
 }

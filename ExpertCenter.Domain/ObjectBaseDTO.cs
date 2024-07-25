@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ExpertCenter.Domain
 {
-    public class ObjectBase
+    public class ObjectBaseDTO
     {
-        public int Id { get; set; } = -1;
+        public int Id { get; set; } = 0;
     }
 }

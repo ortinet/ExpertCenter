@@ -27,7 +27,7 @@ namespace ExpertCenter.Controllers
         [HttpGet]
         public IActionResult PriceList(int id)
         {
-            PriceList? requiredList = _repository.GetPriceList(id);
+            PriceListDTO? requiredList = _repository.GetPriceList(id);
             if (requiredList == null)
                 return NotFound();
 
@@ -37,7 +37,7 @@ namespace ExpertCenter.Controllers
         [HttpGet]
         public IActionResult New()
         {
-            PriceList newPriceList = new PriceList();
+            PriceListDTO newPriceList = new PriceListDTO();
             newPriceList.Columns = _repository.GetUnickUserColumns().ToList();
 
             NewPriceListViewModel vm = new(newPriceList, _repository.GetColumnTypes());
@@ -54,7 +54,7 @@ namespace ExpertCenter.Controllers
             var columnsHeaders = Request.Form["columnHeader"];
             var columnsTypeCodes = Request.Form["columnTypeCode"];
 
-            PriceList newPriceList = new PriceList();
+            PriceListDTO newPriceList = new PriceListDTO();
             newPriceList.Name = name;
             for (int i = 0; i < columnsHeaders.Count; i++)
             {
@@ -67,7 +67,7 @@ namespace ExpertCenter.Controllers
                 if (currentColumnType == null)
                     return Content(UnableToCreatePriceListMessage);
 
-                UserColumn column = new UserColumn()
+                UserColumnDTO column = new UserColumnDTO()
                 {
                     Header = currentHeader,
                     Type = currentColumnType,

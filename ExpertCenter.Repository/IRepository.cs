@@ -9,13 +9,13 @@ namespace ExpertCenter.Repository
 {
     public interface IRepository
     {
-        IEnumerable<ColumnType> GetColumnTypes();
-        ColumnType? GetColumnType(string code);
-        IEnumerable<PriceList> GetPriceLists();
-        PriceList? GetPriceList(int id);
-        IEnumerable<UserColumn> GetUnickUserColumns();
-        bool CreateProduct(Product product);
-        bool CreatePriceList(PriceList priceList);
+        IEnumerable<ColumnTypeDTO> GetColumnTypes();
+        ColumnTypeDTO? GetColumnType(string code);
+        IEnumerable<PriceListDTO> GetPriceLists();
+        PriceListDTO? GetPriceList(int id);
+        IEnumerable<UserColumnDTO> GetUnickUserColumns();
+        bool CreateProduct(ProductDTO product);
+        bool CreatePriceList(PriceListDTO priceList);
         bool DeleteProduct(int id);
     }
 }

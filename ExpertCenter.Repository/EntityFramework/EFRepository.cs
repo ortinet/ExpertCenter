@@ -1,89 +1,112 @@
-﻿using ExpertCenter.Domain;
+﻿using ExpertCenter.Repository.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ExpertCenter.Repository.EntityFramework
 {
     public class EFRepository : DbContext, IRepository
     {
-        private DbSet<EFPriceList> PriceLists { get; set; } = null!;
-        private DbSet<EFProduct> Products { get; set; } = null!;
-        private DbSet<EFUserColumn> UserColumns { get; set; } = null!;
-        private DbSet<EFUserColumnValue> UserColumnValues { get; set; } = null!;
-        private DbSet<EFColumnType> ColumnTypes { get; set; } = null!;
+        private DbSet<PriceList> PriceLists { get; set; } = null!;
+        private DbSet<Product> Products { get; set; } = null!;
+        private DbSet<UserColumn> UserColumns { get; set; } = null!;
+        private DbSet<UserColumnValue> UserColumnValues { get; set; } = null!;
+        private DbSet<ColumnType> ColumnTypes { get; set; } = null!;
 
-        private readonly string _connectionString = "Server=localhost;Database=ExpertCenterDB;Trusted_Connection=True;";
+        private readonly string _connectionString = "Server=localhost;Database=ExpertCenterDB;Trusted_Connection=true;TrustServerCertificate=True";
+
+        public EFRepository()
+        {
+            //Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
 
         public EFRepository(string connectionString)
         {
             _connectionString = connectionString;
 
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
-        public bool CreatePriceList(PriceList priceList)
+        public bool CreatePriceList(Domain.PriceListDTO priceList)
         {
-            var entry = PriceLists.Add(priceList.ConvertToEF());
-            SaveChanges();
+            try
+            {
+                var entry = PriceLists.Add(priceList.ConvertToEF());
+                SaveChanges();
 
-            return entry.State == EntityState.Added;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public bool CreateProduct(Product product)
+        public bool CreateProduct(Domain.ProductDTO product)
         {
-            var entry = Products.Add(product.ConvertToEF());
-            SaveChanges();
+            try
+            {
+                var entry = Products.Add(product.ConvertToEF());
+                SaveChanges();
 
-            return entry.State == EntityState.Added;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public bool DeleteProduct(int id)
         {
+            UserColumnValues.Where(columnValue => columnValue.ProductId == id).ExecuteDelete();
             int rowsAffected = Products.Where(product => product.Id == id).ExecuteDelete();
             SaveChanges();
 
             return rowsAffected == 1;
         }
 
-        public ColumnType? GetColumnType(string code)
+        public Domain.ColumnTypeDTO? GetColumnType(string code)
         {
             return ColumnTypes.FirstOrDefault(c => c.Code == code)?.Convert();
         }
 
-        public IEnumerable<ColumnType> GetColumnTypes()
+        public IEnumerable<Domain.ColumnTypeDTO> GetColumnTypes()
         {
-            List<ColumnType> result = [];
-            foreach (var efColumnType in ColumnTypes)
+            List<Domain.ColumnTypeDTO> result = [];
+            foreach (var efColumnType in ColumnTypes.ToList())
                 result.Add(efColumnType.Convert());
 
             return result;
         }
 
-        public PriceList? GetPriceList(int id)
+        public Domain.PriceListDTO? GetPriceList(int id)
         {
-            return PriceLists.FirstOrDefault(x => x.Id == id)?.Convert();
+            return PriceLists
+                .Include(priceList => priceList.UserColumns)
+                    .ThenInclude(column => column.ColumnType)
+                .Include(priceList => priceList.Products)
+                    .ThenInclude(product => product.UserColumnValues)
+                .FirstOrDefault(x => x.Id == id)?.Convert();
         }
 
-        public IEnumerable<PriceList> GetPriceLists()
+        public IEnumerable<Domain.PriceListDTO> GetPriceLists()
         {
-            List<PriceList> result = [];
-            foreach (var efPriceList in PriceLists)
+            List<Domain.PriceListDTO> result = [];
+            foreach (var efPriceList in PriceLists.ToList())
                 result.Add(efPriceList.Convert());
 
             return result;
         }
 
-        public IEnumerable<UserColumn> GetUnickUserColumns()
+        public IEnumerable<Domain.UserColumnDTO> GetUnickUserColumns()
         {
-            IEnumerable<EFUserColumn> efUserColumns = UserColumns.DistinctBy(column => new { column.Header, column.ColumnType.Code });
+            IEnumerable<UserColumn> efUserColumns = 
+                UserColumns.Include(column => column.ColumnType).AsEnumerable()
+                .DistinctBy(column => new { column.Header, column.ColumnTypeId });
 
-            List<UserColumn> result = new List<UserColumn>();
-            foreach (var efUserColumn in efUserColumns)
+            List<Domain.UserColumnDTO> result = new List<Domain.UserColumnDTO>();
+            foreach (var efUserColumn in efUserColumns.ToList())
                 result.Add(efUserColumn.Convert());
 
             return result;
@@ -92,6 +115,19 @@ namespace ExpertCenter.Repository.EntityFramework
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserColumnValue>()
+            .HasOne(columnValue => columnValue.Product)
+            .WithMany(product => product.UserColumnValues)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            //modelBuilder.Entity<UserColumnValue>()
+            //.HasOne(columnValue => columnValue.UserColumn)
+            //.WithMany(column => column.UserColumnValues)
+            //.OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

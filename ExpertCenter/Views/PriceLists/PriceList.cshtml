@@ -1,4 +1,4 @@
-﻿@model ExpertCenter.Domain.PriceList
+﻿@model ExpertCenter.Domain.PriceListDTO
 
 <h3>@Model.Name</h3>
 
@@ -27,7 +27,13 @@
                 <td>@product.Code</td>
                 @foreach (var column in Model.Columns)
                 {
-                    string? val = product.UserColumnValues[column.Id];
+                    string? val;
+                    if (product.UserColumnValues.TryGetValue(column.Id, out string? value))
+                    {
+                        val = value;
+                    }
+                    else val = "?";
+
                     <td>@(val ?? string.Empty)</td>
                 }
                 <td style="text-align: center;">

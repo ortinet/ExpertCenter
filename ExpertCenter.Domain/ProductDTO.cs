@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExpertCenter.Domain
 {
-    public class Product : ObjectBase
+    public class ProductDTO : ObjectBaseDTO
     {
         [Required(ErrorMessage = "Укажите название товара")]
         public string Name { get; set; }

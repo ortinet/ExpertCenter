@@ -4,10 +4,10 @@ namespace ExpertCenter.Models
 {
     public class NewPriceListViewModel
     {
-        public PriceList PriceList { get; }
-        public IEnumerable<ColumnType> ColumnTypes { get; }
+        public PriceListDTO PriceList { get; }
+        public IEnumerable<ColumnTypeDTO> ColumnTypes { get; }
 
-        public NewPriceListViewModel(PriceList priceList, IEnumerable<ColumnType> availableColumnTypes)
+        public NewPriceListViewModel(PriceListDTO priceList, IEnumerable<ColumnTypeDTO> availableColumnTypes)
         {
             PriceList = priceList;
             ColumnTypes = availableColumnTypes;
